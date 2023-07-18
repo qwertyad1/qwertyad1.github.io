@@ -2,7 +2,7 @@
 console.log(document.location.href)
 
 var token = new URL(document.location.href.replace('#', '?')).searchParams.get("access_token")
-
+if (token !== null) {
 var options = {headers: new Headers({Authorization: `Bearer ${token}`})}
 
 var req = fetch("https://discordapp.com/api/users/@me", options)
@@ -12,6 +12,7 @@ var user = req.then(res => res.json())
 user.then(user => console.log(user))
 user.then(user => document.getElementById("username").innerHTML = user.username)
 user.then(user => document.getElementById("profile").src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}`)
+}
 </script>
 
 <img id=profile></img>
