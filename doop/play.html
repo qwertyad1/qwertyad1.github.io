@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="border:0">
+  <body style="border:0;margin:0">
+  <canvas id="canvas" style="display:block; border:0; padding:0; background-color: black; margin: 0; padding: 0;" 
+		oncontextmenu="event.preventDefault()" tabindex=-1 width=600 height=400></canvas>
+    <span id="logmsg" hidden=true></span>
+    <script type='text/javascript' referrerpolicy="no-referrer-when-downgrade">
+  var Module = {
+    preRun: [],
+    postRun: [],
+    arguments: [ (new URLSearchParams(window.location.search)).get("username"), "doop", "ws.classicube.net/81.158.172.85:25565", "443"],
+    print: function(text) {
+      if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+      console.log(text);
+    },
+    printErr: function(text) {
+      if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+      console.error(text);
+    },
+    canvas: (function() { return document.getElementById('canvas'); })(),
+    setStatus: function(text) {
+      console.log(text);
+      document.getElementById('logmsg').innerHTML = text;
+    },
+    totalDependencies: 0,
+    monitorRunDependencies: function(left) {
+      this.totalDependencies = Math.max(this.totalDependencies, left);
+      Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
+    }
+  };
+  Module.setStatus('Downloading...');
+  window.onerror = function(msg) {
+    // TODO: do not warn on ok events like simulating an infinite loop or exitStatus
+    Module.setStatus('Exception thrown, see JavaScript console (' + msg + ')');
+    Module.setStatus = function(text) {
+      if (text) Module.printErr('[post-exception status] ' + text);
+    };
+  };
+  Module.canvas.height = window.innerHeight
+  Module.canvas.width = window.innerWidth
+</script>
+
+<script async type="text/javascript" src="/ClassiCube.js" referrerpolicy="no-referrer-when-downgrade"></script>
+  </body>
+</html>
