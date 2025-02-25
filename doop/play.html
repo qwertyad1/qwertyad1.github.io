@@ -38,6 +38,10 @@
   };
   Module.canvas.height = window.innerHeight
   Module.canvas.width = window.innerWidth
+  addEventListener("resize", (event) => {
+	   Module.canvas.height = window.innerHeight
+           Module.canvas.width = window.innerWidth
+	});
 </script>
 
 <script async type="text/javascript" src="ClassiCube.js?dont-cash=1" referrerpolicy="no-referrer-when-downgrade"></script>
