@@ -1,4 +1,4 @@
-import { BACKWARD, BEAT, BREAK, cell, DIRECTIONAL, DOWN, FORWARD, LEFT, TICK, RIGHT, sound, UP, texture } from '/simulation.js'
+import { BACKWARD, BEAT, BREAK, cell, DIRECTIONAL, DOWN, FORWARD, LEFT, TICK, RIGHT, sound, UP, texture } from 'https://blob-machine.pages.dev/simulation.js'
 
 const redColors = ['#600', '#700', '#800', '#900', '#a00', '#b00', '#c00', '#d00']
 const breadColors = ['#cb8', '#ca7', '#c96']
